@@ -33,12 +33,9 @@ public class PathFinder
         curNode.NodeId = m_startPoint;
 
         m_closeNodeList.Add(curNode);
-        int k = 0;
 
-        while (curNode.NodeId != m_endPoint && !(curNode.NodeId != m_startPoint && m_openNodeList.Count == 0) && k < 50)
+        while (curNode.NodeId != m_endPoint && !(curNode.NodeId != m_startPoint && m_openNodeList.Count == 0))
         {
-            k++;
-            //Debug.Log(curNode.NodeId);
             for (DirectionFlags e = DirectionFlags.RIGHT; e < DirectionFlags.COUNT; e++)
             {
                 nextNodes[(int)e] = new NodeInfo();
@@ -60,14 +57,21 @@ public class PathFinder
                 }
 
                 enumerator = m_closeNodeList.GetEnumerator();
+                bool isDuplicated = false;
                 while (enumerator.MoveNext())
                 {
                     if (enumerator.Current.NodeId == nextNodes[(int)e].NodeId)
                     {
-                        continue;
+                        isDuplicated = true;
+                        break;
                     }
                 }
-                Debug.Log(m_wayPointManager.GetWayPoint(nextNodes[(int)e].NodeId));
+
+                if(isDuplicated)
+                {
+                    continue;
+                }
+
                 if (m_wayPointManager.GetWayPoint(nextNodes[(int)e].NodeId) != null)
                 {
                     nextNodes[(int)e].ScoreG += curNode.ScoreG + 1;

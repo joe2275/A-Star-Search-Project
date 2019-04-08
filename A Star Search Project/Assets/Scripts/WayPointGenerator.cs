@@ -68,10 +68,12 @@ public class WayPointGenerator : MonoBehaviour {
 
         Vector2 curPosition = m_centerPosition;
         Vector2Int curKey = m_centerKey;
-
         WayPoint curWayPoint = new WayPoint(curKey);
-
-        m_wayPointManager.AddWayPoint(curWayPoint);
+        Collider2D obstacle = Physics2D.OverlapBox(curPosition, m_gapSize, 0.0f, m_obstacleLayer);
+        if (obstacle == null)
+        {
+            m_wayPointManager.AddWayPoint(curWayPoint);
+        }
         wayPointQueue.Enqueue(curWayPoint);
         
         // BFS Algorithm
@@ -92,7 +94,7 @@ public class WayPointGenerator : MonoBehaviour {
                     (nextKeys[i].x <= m_rightUpKey.x && nextKeys[i].y <= m_rightUpKey.y)))
                 {
                     nextPosition = m_wayPointManager.ConvertKeyToPosition(nextKeys[i]);
-                    Collider2D obstacle = Physics2D.OverlapBox(nextPosition, m_gapSize, 0.0f, m_obstacleLayer);
+                    obstacle = Physics2D.OverlapBox(nextPosition, m_gapSize, 0.0f, m_obstacleLayer);
                     if(obstacle == null)
                     {
                         nextWayPoint = new WayPoint(nextKeys[i]);

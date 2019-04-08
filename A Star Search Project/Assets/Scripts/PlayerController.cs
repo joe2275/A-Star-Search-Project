@@ -31,7 +31,6 @@ public class PlayerController : MonoBehaviour
                 if (isArrived)
                 {
                     nextPosition = WayPointManager.Instance.ConvertKeyToPosition(m_path.Pop());
-                    Debug.Log(nextPosition);
                     isArrived = false;
                 }
                 else

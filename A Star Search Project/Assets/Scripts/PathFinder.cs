@@ -33,10 +33,12 @@ public class PathFinder
         curNode.NodeId = m_startPoint;
 
         m_closeNodeList.Add(curNode);
+        int k = 0;
 
-
-        while (curNode.NodeId != m_endPoint)
+        while (curNode.NodeId != m_endPoint && !(curNode.NodeId != m_startPoint && m_openNodeList.Count == 0) && k < 50)
         {
+            k++;
+            //Debug.Log(curNode.NodeId);
             for (DirectionFlags e = DirectionFlags.RIGHT; e < DirectionFlags.COUNT; e++)
             {
                 nextNodes[(int)e] = new NodeInfo();
@@ -65,7 +67,7 @@ public class PathFinder
                         continue;
                     }
                 }
-
+                Debug.Log(m_wayPointManager.GetWayPoint(nextNodes[(int)e].NodeId));
                 if (m_wayPointManager.GetWayPoint(nextNodes[(int)e].NodeId) != null)
                 {
                     nextNodes[(int)e].ScoreG += curNode.ScoreG + 1;
@@ -111,7 +113,6 @@ public class PathFinder
                     curNode = nextNode;
                 }
             }
-
             m_openNodeList.Remove(curNode);
             m_closeNodeList.Add(curNode);
         }

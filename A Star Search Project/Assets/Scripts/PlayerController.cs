@@ -13,10 +13,10 @@ public class PlayerController : MonoBehaviour
         //WayPointManager.Instance.Print();
         PathFinder finder = new PathFinder();
         m_path = finder.FindPath();
-        while (m_path.Count != 0)
-        {
-            Debug.Log(m_path.Pop());
-        }
+        //while (m_path.Count != 0)
+        //{
+        //    Debug.Log(m_path.Pop());
+        //}
     }
 
     // Update is called once per frame

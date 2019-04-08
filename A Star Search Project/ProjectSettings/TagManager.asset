@@ -44,3 +44,6 @@ TagManager:
   - name: Trap
     uniqueID: 1568893121
     locked: 0
+  - name: Player
+    uniqueID: 11525797
+    locked: 0

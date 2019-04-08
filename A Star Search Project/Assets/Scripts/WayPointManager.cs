@@ -20,7 +20,7 @@ public class WayPoint
     {
         m_targetDict = new Dictionary<EWayPointFlags, List<Transform>>();
 
-        for(EWayPointFlags e = EWayPointFlags.EMPTY; e < EWayPointFlags.COUNT; e++)
+        for (EWayPointFlags e = EWayPointFlags.EMPTY; e < EWayPointFlags.COUNT; e++)
         {
             m_targetDict.Add(e, new List<Transform>());
         }
@@ -37,6 +37,11 @@ public class WayPoint
     {
         m_targetDict[wayPointFlag].Remove(targetTransform);
     }
+
+    public List<Transform>.Enumerator GetTarget(EWayPointFlags wayPointFlag)
+    {
+        return m_targetDict[wayPointFlag].GetEnumerator();
+    }
 }
 
 /*
@@ -45,7 +50,7 @@ public class WayPoint
  */
 public enum EWayPointFlags
 {
-    EMPTY = 0, PLAYER, MONSTER, ARRIVAL, COUNT
+    EMPTY = 0, PLAYER, TRAP, ARRIVAL, COUNT
 }
 
 /*
@@ -120,6 +125,16 @@ public class WayPointManager
         {
             return m_wayPointDict[key];
         }
+        return null;
+    }
+
+    public WayPoint GetWayPoint(Vector2Int key)
+    {
+        if(m_wayPointDict.ContainsKey(key))
+        {
+            return m_wayPointDict[key];
+        }
+
         return null;
     }
 

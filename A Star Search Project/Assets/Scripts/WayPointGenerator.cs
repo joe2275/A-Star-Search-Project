@@ -52,10 +52,6 @@ public class WayPointGenerator : MonoBehaviour {
         m_centerKey = m_wayPointManager.ConvertPositionToKey(m_centerPosition);
         m_gapSize = m_wayPointManager.GapSize;
         m_gapSize = new Vector2(m_gapSize.x * 0.9f, m_gapSize.y * 0.9f);
-    }
-
-    private void Start()
-    {
         GenerateWayPoint();
     }
 

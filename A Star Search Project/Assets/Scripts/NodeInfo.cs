@@ -5,7 +5,13 @@ using UnityEngine;
 public class NodeInfo
 {
     public Vector2Int NodeId { get; set; }
-    public float ScoreF { get; set; }
+    public float ScoreF
+    {
+        get
+        {
+            return ScoreG + ScoreH;
+        }
+    }
     public float ScoreG { get; set; }
     public float ScoreH { get; set; }
     public Vector2Int ParentId { get; set; }

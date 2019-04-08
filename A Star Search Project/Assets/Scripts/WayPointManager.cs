@@ -130,12 +130,21 @@ public class WayPointManager
 
     public WayPoint GetWayPoint(Vector2Int key)
     {
+
         if(m_wayPointDict.ContainsKey(key))
         {
             return m_wayPointDict[key];
         }
 
         return null;
+    }
+
+    public void Print()
+    {
+        foreach (KeyValuePair<Vector2Int, WayPoint> pair in m_wayPointDict)
+        {
+            Debug.Log(pair.Key);
+        }
     }
 
     /// <summary>

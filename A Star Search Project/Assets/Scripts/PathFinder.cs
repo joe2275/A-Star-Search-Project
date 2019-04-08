@@ -26,8 +26,6 @@ public class PathFinder
 
     public Stack<Vector2Int> FindPath()
     {
-        m_wayPointManager.Print();
-
         NodeInfo curNode = new NodeInfo();
         NodeInfo[] nextNodes = new NodeInfo[(int)DirectionFlags.COUNT];
         List<NodeInfo>.Enumerator enumerator;

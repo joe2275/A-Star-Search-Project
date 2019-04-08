@@ -53,6 +53,7 @@ public class WayPointGenerator : MonoBehaviour {
         m_gapSize = m_wayPointManager.GapSize;
         m_gapSize = new Vector2(m_gapSize.x * 0.9f, m_gapSize.y * 0.9f);
         GenerateWayPoint();
+        Debug.Log("Gen");
     }
 
     public void GenerateWayPoint()

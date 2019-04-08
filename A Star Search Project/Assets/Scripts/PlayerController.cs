@@ -9,6 +9,8 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //Debug.Log("Player");
+        //WayPointManager.Instance.Print();
         PathFinder finder = new PathFinder();
         m_path = finder.FindPath();
         while (m_path.Count != 0)

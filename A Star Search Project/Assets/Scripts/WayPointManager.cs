@@ -68,7 +68,7 @@ public class WayPointManager
             if (m_instance == null)
             {
                 m_instance = new WayPointManager();
-                SceneManager.activeSceneChanged += SceneManager_activeSceneChanged;
+                //SceneManager.activeSceneChanged += SceneManager_activeSceneChanged;
             }
 
             return m_instance;

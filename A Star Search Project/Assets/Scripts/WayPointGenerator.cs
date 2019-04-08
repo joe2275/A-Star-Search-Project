@@ -21,8 +21,6 @@ public class WayPointGenerator : MonoBehaviour {
     private Vector2 m_centerPosition;
     private Vector2Int m_centerKey;
 
-    private Transform m_wayPointHolder;
-
     private Vector2 m_gapSize;
 
     private void OnDrawGizmos()
@@ -40,8 +38,6 @@ public class WayPointGenerator : MonoBehaviour {
 
     private void Awake()
     {
-        m_wayPointHolder = new GameObject("WayPoint_Holder").transform;
-
         for(int i=0; i< m_obstacleLayers.Length; i++)
         {
             m_obstacleLayer = m_obstacleLayer | 1 << (int)m_obstacleLayers[i];
@@ -100,10 +96,7 @@ public class WayPointGenerator : MonoBehaviour {
                     if(obstacle == null)
                     {
                         nextWayPoint = new WayPoint(nextKeys[i]);
-                        GameObject instObject = new GameObject("WayPoint");
-                        instObject.transform.SetParent(m_wayPointHolder);
                         Vector2 position = m_wayPointManager.ConvertKeyToPosition(nextKeys[i]);
-                        instObject.transform.position = new Vector3(position.x, position.y, 0.0f);
                         if (m_wayPointManager.AddWayPoint(nextWayPoint))
                         {
                             wayPointQueue.Enqueue(nextWayPoint);

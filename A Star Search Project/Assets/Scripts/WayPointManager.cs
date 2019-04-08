@@ -68,7 +68,6 @@ public class WayPointManager
             if (m_instance == null)
             {
                 m_instance = new WayPointManager();
-                //SceneManager.activeSceneChanged += SceneManager_activeSceneChanged;
             }
 
             return m_instance;
@@ -155,5 +154,10 @@ public class WayPointManager
     private static void SceneManager_activeSceneChanged(Scene arg0, Scene arg1)
     {
         m_instance = new WayPointManager();
+    }
+
+    public void Destroy()
+    {
+        m_instance = null;
     }
 }

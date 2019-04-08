@@ -52,7 +52,7 @@ public class WorldGenerator : MonoBehaviour
         m_horizontalMax = (int)((m_rightUpPosition.x - gap_x) / m_gapSize.x);
         m_verticalMin = (int)((m_leftDownPosition.y) / m_gapSize.y);
         m_verticalMax = (int)((m_rightUpPosition.y - gap_y) / m_gapSize.y) - 1;
-        for (int i = m_horizontalMin; i <= m_horizontalMax; i++)
+        for (int i = m_horizontalMin +1; i <= m_horizontalMax -1; i++)
         {
             for (int j = m_verticalMin; j <= m_verticalMax; j++)
             {

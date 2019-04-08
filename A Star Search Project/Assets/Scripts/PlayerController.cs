@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -42,6 +43,12 @@ public class PlayerController : MonoBehaviour
                     playerTransform.position = Vector2.MoveTowards(playerTransform.localPosition, nextPosition, 20.0f * Time.deltaTime);
                 }
             }
+        }
+
+        if(Input.GetKeyDown(KeyCode.R))
+        {
+            WayPointManager.Instance.Destroy();
+            SceneManager.LoadScene(0);
         }
     }
 }
